@@ -32,14 +32,48 @@ let month = months[nowDate.getMonth()];
 currentDate.innerHTML = `${day}, ${month} ${date}, ${hours}:${minutes}, ${year}.`;
 
 //Search City
-function search(event) {
+function searchCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-text-input");
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${searchInput.value}`;
+
+  let apiKey = "f570a1fbc37130aef5bf06a2e40664d1";
+  let units = "metric";
+  let city = document.querySelector("#search-text-input");
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiUrl = `${apiEndpoint}?q=${searchInput.value}&units=${units}`;
+
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+form.addEventListener("submit", searchCity);
+
+//Show temperature
+
+function showTemperature(response) {
+  console.log(response.data);
+  console.log(response.data.main.temp);
+  let currentTemp = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("h2");
+  temperatureElement.innerHTML = `${currentTemp} °C`;
+}
+// Show Geocordinates
+function showPosition(position) {
+  console.log(position);
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.latitude;
+
+  let apiKey = "f570a1fbc37130aef5bf06a2e40664d1";
+  let apiEndpoint = "http://api.openweathermap.org/geo/1.0/reverse?lat=";
+  let apiUrl = `${latitude}&${longitude}&limit=5&appid=${apiKey}`;
+
+  let btnElement = document.querySelector("#currentButton");
+  btnElement.innerHTML = `${currentTemp}°C`;
+}
+let btn = document.querySelector("#currentButton");
+btn.addEventListener("click", showPosition);
+navigator.geolocation.getCurrentPosition(showPosition);
 
 //Convert to Celsius
 function showCelsius(event) {
