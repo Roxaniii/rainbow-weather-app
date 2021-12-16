@@ -1,0 +1,64 @@
+body {
+  font-family: "Yuji Syuku", serif;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(255, 156, 156) 0%,
+    rgb(179, 201, 241) 90%
+  );
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.quote {
+  font-size: 15px;
+  text-align: center;
+  padding-bottom: 0px;
+}
+.navbar-light {
+  padding: 0auto;
+}
+.container-fluid {
+  padding: 0auto;
+}
+h1 {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 40px;
+  font-weight: bold;
+  font-family: "Yuji Syuku", serif;
+}
+h2 {
+  text-align: center;
+  font-size: 70px;
+  font-weight: 6000px;
+  font-family: "Yuji Syuku", serif;
+}
+button {
+  font-family: "Yuji Syuku", serif;
+  background-color: #febe7e;
+  font-weight: bold;
+}
+.row.middle {
+  padding-bottom: 20px;
+}
+
+.weatherCondition {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+.fas.fa-rainbow {
+  color: #febe7e;
+  font-size: 100px;
+}
+
+.col {
+  font-weight: bold;
+}
+.fas.fa-cloud-sun-rain {
+  color: #febe7e;
+  font-size: 40px;
+  margin: 15px;
+}
