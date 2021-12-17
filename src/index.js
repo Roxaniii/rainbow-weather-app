@@ -65,11 +65,13 @@ function showPosition(position) {
   let longitude = position.coords.latitude;
 
   let apiKey = "f570a1fbc37130aef5bf06a2e40664d1";
-  let apiEndpoint = "http://api.openweathermap.org/geo/1.0/reverse?lat=";
-  let apiUrl = `${latitude}&${longitude}&limit=5&appid=${apiKey}`;
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiUrl = `${apiEndpoint}lat=${latitude}&lon=${longitude}`;
 
   let btnElement = document.querySelector("#currentButton");
   btnElement.innerHTML = `${currentTemp}°C`;
+
+  axios.get(`${apiUrl}&appid=${apiKey}&units=metric`).then(showTemperature);
 }
 let btn = document.querySelector("#currentButton");
 btn.addEventListener("click", showPosition);
