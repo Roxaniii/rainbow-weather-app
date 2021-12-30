@@ -66,17 +66,25 @@ function showCurrentPosition(position) {
 
   let apiKey = "f570a1fbc37130aef5bf06a2e40664d1";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
-  let apiUrl = `${apiEndpoint}lat=${latitude}&lon=${longitude}`;
-
-  let btnElement = document.querySelector("#currentButton");
-  btnElement.innerHTML = `${currentTemp}°C`;
 
   axios
-    .get(`${apiEndpoint}lat=${latitude}&lon${longitude}`)
+    .get(
+      `${apiEndpoint}lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+    )
     .then(showTemperature);
 }
+
+// let apiUrl = `${apiEndpoint}lat=${latitude}&lon=${longitude}`;
+
+// let btnElement = document.querySelector("#currentButton");
+// btnElement.innerHTML = `${currentTemp}°C`;
+//
+//axios
+//.get(`${apiEndpoint}lat=${latitude}&lon${longitude}`)
+//.then(showTemperature);
+
 let btn = document.querySelector("#currentButton");
-btn.addEventListener("click", showCurrentPosition);
+btn.addEventListener("click", getCurrentLocation);
 navigator.geolocation.getCurrentPosition(showCurrentPosition);
 
 function getCurrentLocation(event) {
